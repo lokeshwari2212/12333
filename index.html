@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .login-container h2 {
+            margin-top: 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .form-group button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            font-size: 0.875em;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+                <div id="usernameError" class="error"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div id="passwordError" class="error"></div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting the default way
+
+            // Clear previous errors
+            document.getElementById('usernameError').textContent = '';
+            document.getElementById('passwordError').textContent = '';
+
+            // Get form values
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Basic validation
+            let hasError = false;
+
+            if (!username) {
+                document.getElementById('usernameError').textContent = 'Username is required.';
+                hasError = true;
+            }
+
+            if (!password) {
+                document.getElementById('passwordError').textContent = 'Password is required.';
+                hasError = true;
+            }
+
+            if (!hasError) {
+                // If no errors, you can handle form submission here
+                // For example, sending the data to a server using fetch API
+                alert('Form submitted successfully!');
+            }
+        });
+    </script>
+</body>
+</html>
